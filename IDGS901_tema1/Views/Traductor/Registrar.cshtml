@@ -1,0 +1,130 @@
+﻿@model IDGS901_tema1.Models.Traductor
+
+@{
+    ViewBag.Title = "Registrar";
+}
+
+
+@using (Html.BeginForm("Registrar", "Traductor", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Traductor</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="form-label">Español</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.espaniol, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.espaniol, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            <label class="form-label">Ingles</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ingles, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ingles, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 mt-2">
+                <input type="submit" value="Guardar Palabras" class="btn btn-outline-primary form-control" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-3 mt-2">
+        <button id="btn_mostrar" type="submit" class="btn btn-outline-success form-control" onclick="mostrarTabla();">Mostrar</button>
+    </div>
+</div>
+<br />
+@if (ViewBag.Palabras != null)
+{
+
+    <div class="card" id="diccionario" style="visibility:hidden;">
+        <div class="card-header" style="background-color: white">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-3 mt-2">
+                    <button id="btn_ocultar" type="submit" class="btn btn-outline-warning form-control">Ocultar</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover mt-2">
+                <tr>
+                    <th>Español</th>
+                    <th>Inglés</th>
+                </tr>
+                @foreach (var item in ViewBag.Palabras)
+                {
+                    <tbody>
+                        @foreach (var palabra in item.Split(','))
+                        {
+                        <td>@palabra</td>
+                    }
+                        </tbody>
+                    }
+
+            </table>
+        </div>
+    </div>
+}
+<hr />
+@using (Html.BeginForm("BuscarPalabras", "Traductor", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Palabra</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="form-label">Palabra</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.palabra, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.palabra, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.RadioButtonFor(model => model.eleccion, "1")@Html.Label("Español")
+                    @Html.RadioButtonFor(model => model.eleccion, "2")@Html.Label("Inglés")
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mt-2">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Buscar" class="btn btn-outline-info form-control" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    function mostrarTabla() {
+        var elemento = document.getElementById("diccionario");
+        var btnMostrar = document.getElementById("btn_mostrar");
+        var btnOcultar = document.getElementById("btn_ocultar");
+
+        btnMostrar.addEventListener("click", function () {
+            elemento.style.visibility = "visible";
+        });
+
+        btnOcultar.addEventListener("click", function () {
+            elemento.style.visibility = "hidden";
+        });
+
+    }
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

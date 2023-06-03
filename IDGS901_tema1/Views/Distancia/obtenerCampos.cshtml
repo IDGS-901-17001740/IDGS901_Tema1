@@ -1,0 +1,29 @@
+﻿@model IDGS901_tema1.Models.Distancia
+
+@{
+    ViewBag.Title = "obtenerCampos";
+}
+
+<h2>Calculo de distancia entre dos puntos</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <form action="/Distancia/Calcular" method="post">
+                <label>Punto X1</label>
+                <input type="text" name="x1" value="" class="form-control" />
+                <label>Punto X2</label>
+                <input type="text" name="x2" value="" class="form-control" />
+                <label>Punto Y1</label>
+                <input type="text" name="y1" value="" class="form-control" />
+                <label>Punto Y2</label>
+                <input type="text" name="y2" value="" class="form-control" />
+                <br />
+                <input type="submit" name="name" value="Calcular distancia" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

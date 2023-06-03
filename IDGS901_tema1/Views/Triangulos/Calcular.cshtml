@@ -1,0 +1,17 @@
+﻿@model IDGS901_tema1.Models.Triangulos
+
+@{
+    ViewBag.Title = "Resultado";
+}
+
+<div>
+    <hr />
+    <div class="col-12">
+        <h2>El triangulo formado es: @Html.DisplayFor(model => model.tipo) </h2>
+        <h2>El área calculada es: @Html.DisplayFor(model => model.msg) </h2>
+    </div>
+    
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

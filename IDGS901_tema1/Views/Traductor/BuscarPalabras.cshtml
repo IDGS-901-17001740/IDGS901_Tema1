@@ -1,0 +1,16 @@
+﻿@model List<IDGS901_tema1.Models.Traductor>
+
+@{
+    ViewBag.Title = "Resultados de la búsqueda";
+}
+
+<h2>Resultados de la búsqueda</h2>
+
+<h1>La palabra es: @ViewBag.Resultados</h1>
+
+<div>
+    @Html.ActionLink("Regresar", "obtenerCampos")
+</div>
+
+
+

@@ -1,0 +1,42 @@
+﻿@model IDGS901_tema1.Models.Temperatura
+
+@{
+    ViewBag.Title = "Calcular";
+}
+
+<h2>Calcular</h2>
+
+<div>
+    <h4>Temperatura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TemperaturaBase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemperaturaBase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eleccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eleccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.res)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "obtenerCampos")
+</p>

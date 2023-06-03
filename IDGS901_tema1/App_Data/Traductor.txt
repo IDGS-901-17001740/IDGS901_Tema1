@@ -1,0 +1,3 @@
+pelota,ball
+rojo,red
+verde,green
